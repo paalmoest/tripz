@@ -1,3 +1,20 @@
-.main {
-  background: red;
+.nextDestination {
+  margin-bottom: 2em;
+}
+
+.flightTripItem {
+  display: inline-block;
+  margin-bottom: 2em;
+  margin-right: 1em;
+}
+
+.restaurantSectionTitle {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+  margin-bottom: 1em;
+}
+
+.restaurantItem {
+  display: inline-block;
+  margin-right: 0.5em;
 }

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { DateRangePicker, FocusedInputShape } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { browserHistory, withRouter, WithRouterProps } from 'react-router';
-import { getDestinations, IDestination } from './clients/destinatioClient';
+import { getDestinations, IDestination } from './clients/destinationsClient';
 interface IState {
   startDate: moment.Moment;
   endDate: moment.Moment;

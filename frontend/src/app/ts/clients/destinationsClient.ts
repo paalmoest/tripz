@@ -10,6 +10,7 @@ export interface IDestination {
 }
 
 export interface IResturants {
+  id: number;
   name: string;
   address: string;
   website: string;

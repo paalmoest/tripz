@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FocusedInputShape } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { Link, withRouter, WithRouterProps } from 'react-router';
-import { getDestinations, IDestination } from './clients/destinatioClient';
+import { getDestinations, IDestination } from './clients/destinationsClient';
 import { getTrips, ITrip } from './clients/googleApiClient';
 import * as style from './Destination.css';
 interface IState {
@@ -52,19 +52,28 @@ export class Destination extends React.Component<WithRouterProps, IState> {
     };
     return (
       <div>
-        <Link to={to}>GI MÆ NO AINNA</Link>
-        {trips.map(x =>
-          <div className={style.main}>
-            <div>{x.price}</div>
-            <div>{x.departrueTime}</div>
+        <div className={style.nextDestination}>
+          <Link to={to}>GI MÆ NO AINNA</Link>
+        </div>
+        {trips.map((x, index) =>
+          <div key={index} className={style.flightTripItem}>
+            <div>{moment(x.departrueTime).format('MMMM Do YYYY HH:mm')}</div>
             <div>{x.flightNumber}</div>
+            <div>{x.price}</div>
           </div>
         )}
-        {
-          destination.restaurants.map(y =>
-            <div>{y.name}</div>
-          )
-        }
+        <div className={style.restaurantSectionTitle}>Awesome Resturants</div>
+        <div>
+          {
+            destination.restaurants.map(x =>
+              <div
+                key={x.id}
+                className={style.restaurantItem}>
+                {x.name}
+              </div>
+            )
+          }
+        </div>
       </div>
     );
   }
