@@ -89,6 +89,7 @@ const config = {
     proxy: {
       '/config': 'http://localhost:3000',
       '/applicationurls': 'http://localhost:3000',
+      '/data': 'http://localhost:3000',
     },
   },
 };

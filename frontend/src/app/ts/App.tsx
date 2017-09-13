@@ -3,12 +3,14 @@ import * as React from 'react';
 import { DateRangePicker, FocusedInputShape } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { withRouter, WithRouterProps } from 'react-router';
+import { getDestinations, IDestination } from './clients/destinatioClient';
 import { getTrips, ITrip } from './clients/googleApiClient';
 interface IState {
   startDate: moment.Moment;
   endDate: moment.Moment;
   focusedInput: FocusedInputShape | null;
   trips: ITrip[];
+  destinations: IDestination[];
 }
 // tslint:disable-next-line:no-any
 export class App extends React.Component<WithRouterProps, IState> {
@@ -19,7 +21,8 @@ export class App extends React.Component<WithRouterProps, IState> {
       startDate: moment(),
       endDate: moment(),
       focusedInput: null,
-      trips: []
+      trips: [],
+      destinations: [],
     };
   }
   onDateChange = async (args: IState) => {
@@ -30,6 +33,8 @@ export class App extends React.Component<WithRouterProps, IState> {
     });
     if (startDate && endDate) {
       const trip = await getTrips(startDate, endDate);
+      const destinations = await getDestinations();
+      this.setState({ destinations: destinations });
       this.setState({
         trips: trip
       });
@@ -38,6 +43,7 @@ export class App extends React.Component<WithRouterProps, IState> {
 
   render() {
     const { trips, startDate, endDate, focusedInput } = this.state;
+    //const destination = destinations.filter(x => x.id === 1)[0];
     return (
       <div>
         <DateRangePicker
@@ -54,11 +60,12 @@ export class App extends React.Component<WithRouterProps, IState> {
             <div>{x.departrueTime}</div>
             <div>{x.flightNumber}</div>
           </div>
-
         )}
+
       </div>
     );
   }
+
 }
 
 // tslint:disable-next-line:no-default-export export-name
