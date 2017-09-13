@@ -2,15 +2,17 @@ import * as moment from 'moment';
 import * as React from 'react';
 import { DateRangePicker, FocusedInputShape } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import { withRouter, WithRouterProps } from 'react-router';
+import { browserHistory, withRouter, WithRouterProps } from 'react-router';
 import { getDestinations, IDestination } from './clients/destinatioClient';
-import { getTrips, ITrip } from './clients/googleApiClient';
 interface IState {
   startDate: moment.Moment;
   endDate: moment.Moment;
   focusedInput: FocusedInputShape | null;
-  trips: ITrip[];
   destinations: IDestination[];
+}
+
+function getRandomInt(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 // tslint:disable-next-line:no-any
 export class App extends React.Component<WithRouterProps, IState> {
@@ -21,10 +23,10 @@ export class App extends React.Component<WithRouterProps, IState> {
       startDate: moment(),
       endDate: moment(),
       focusedInput: null,
-      trips: [],
       destinations: [],
     };
   }
+
   onDateChange = async (args: IState) => {
     const { startDate, endDate } = args;
     this.setState({
@@ -32,20 +34,25 @@ export class App extends React.Component<WithRouterProps, IState> {
       endDate
     });
     if (startDate && endDate) {
-      const trip = await getTrips(startDate, endDate);
-      const destinations = await getDestinations();
-      this.setState({ destinations: destinations });
-      this.setState({
-        trips: trip
-      });
+      const data = await getDestinations();
+      const randomDestId = getRandomInt(0, data.destinations.length);
+      const randomDest = data.destinations[randomDestId].id;
+      const updatedPath = {
+        pathname: `/destination/${randomDest}`,
+        query: {
+          startDate: startDate.format('YYYY-MM-DD'),
+          endDate: endDate.format('YYYY-MM-DD')
+        }
+      };
+      browserHistory.push(updatedPath);
     }
   }
 
   render() {
-    const { trips, startDate, endDate, focusedInput } = this.state;
-    //const destination = destinations.filter(x => x.id === 1)[0];
+    const { startDate, endDate, focusedInput } = this.state;
     return (
       <div>
+        <h1>Velg dato for din Oooovale weekend</h1>
         <DateRangePicker
           startDate={startDate}
           endDate={endDate}
@@ -54,14 +61,6 @@ export class App extends React.Component<WithRouterProps, IState> {
           onFocusChange={f => this.setState({ focusedInput: f })}
           minimumNights={0}
         />
-        {trips.map(x =>
-          <div>
-            <div>{x.price}</div>
-            <div>{x.departrueTime}</div>
-            <div>{x.flightNumber}</div>
-          </div>
-        )}
-
       </div>
     );
   }

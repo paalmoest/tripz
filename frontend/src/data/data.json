@@ -1,21 +1,41 @@
 {
   "destinations": [{
-    "id": 1,
-    "name": "stockholm",
-    "restaurants": [{
-        "name": "kottfiskbaren",
-        "address": "gamla, Gamla Brogatan 40, 111 20 Stockholm, Sverige",
-        "link": "kottfiskbaren.se",
-        "description": "",
-        "gmapsLink": "https://goo.gl/maps/NjZZ9SUb8EH2"
-      },
-      {
-        "name": "Speceriet",
-        "address": "14 Artillerigatan, Stockholm 114 51, Sverige",
-        "link": "http://speceriet.se",
-        "description": "",
-        "gmapsLink": "https://goo.gl/maps/Yfes7aVegYK2"
-      }
-    ]
-  }]
+      "id": 1,
+      "name": "stockholm",
+      "restaurants": [{
+          "name": "kottfiskbaren",
+          "address": "gamla, Gamla Brogatan 40, 111 20 Stockholm, Sverige",
+          "link": "kottfiskbaren.se",
+          "description": "",
+          "gmapsLink": "https://goo.gl/maps/NjZZ9SUb8EH2"
+        },
+        {
+          "name": "Speceriet",
+          "address": "14 Artillerigatan, Stockholm 114 51, Sverige",
+          "link": "http://speceriet.se",
+          "description": "",
+          "gmapsLink": "https://goo.gl/maps/Yfes7aVegYK2"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "berlin",
+      "restaurants": [{
+          "name": "berlin1",
+          "address": "gamla, Gamla Brogatan 40, 111 20 Stockholm, Sverige",
+          "link": "kottfiskbaren.se",
+          "description": "",
+          "gmapsLink": "https://goo.gl/maps/NjZZ9SUb8EH2"
+        },
+        {
+          "name": "berlin2",
+          "address": "14 Artillerigatan, Stockholm 114 51, Sverige",
+          "link": "http://speceriet.se",
+          "description": "",
+          "gmapsLink": "https://goo.gl/maps/Yfes7aVegYK2"
+        }
+      ]
+    }
+  ]
 }
