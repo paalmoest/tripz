@@ -1,3 +1,6 @@
 Api/.idea/
 frontend/src/.idea/
 frontend/src/node_modules/
+frontend/src/package-lock.json
+Api/Api/bin/
+Api/Api/obj/
