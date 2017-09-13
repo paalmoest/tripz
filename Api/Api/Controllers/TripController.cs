@@ -85,11 +85,10 @@ namespace Api.Controllers
                 trips.Add(new Trip
                 {
                     Price =  tripOption.SaleTotal,
-                    DepartrueTime = tripOption.Slice[0].Segment[0].Leg[0].DepartureTime
+                    DepartrueTime = tripOption.Slice[0].Segment[0].Leg[0].DepartureTime,
+                    FlightNumber = $"{tripOption.Slice[0].Segment[0].Flight.Carrier}{tripOption.Slice[0].Segment[0].Flight.Number}"
                 });
             }
-            
-         
             return trips;
         }
     }
@@ -98,6 +97,7 @@ namespace Api.Controllers
     {
         public string Price { get; set; }
         public string DepartrueTime { get; set; }
+        public string FlightNumber { get; set; }
     }
     
 }

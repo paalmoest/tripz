@@ -3,6 +3,7 @@ import * as moment from 'moment';
 export interface ITrip {
   price: string;
   departrueTime: string;
+  flightNumber: string;
 }
 // tslint:disable-next-line:export-name
 export async function getTrips(startDate: moment.Moment, endDate: moment.Moment) {

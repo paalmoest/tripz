@@ -38,7 +38,6 @@ export class App extends React.Component<WithRouterProps, IState> {
 
   render() {
     const { trips, startDate, endDate, focusedInput } = this.state;
-    debugger;
     return (
       <div>
         <DateRangePicker
@@ -50,7 +49,12 @@ export class App extends React.Component<WithRouterProps, IState> {
           minimumNights={0}
         />
         {trips.map(x =>
-          <div>{x.price}</div>
+          <div>
+            <div>{x.price}</div>
+            <div>{x.departrueTime}</div>
+            <div>{x.flightNumber}</div>
+          </div>
+
         )}
       </div>
     );
