@@ -38,7 +38,10 @@ export class Destination extends React.Component<WithRouterProps, IState> {
     const { destinations, trips } = this.state;
     const { startDate, endDate } = this.props.location.query;
     const id = parseInt(this.props.params.id, 10);
-    const destinationsLoaded = destinations.length > 0;
+    const destination = destinations.find(x => x.id === id);
+    if (!destination) {
+      return null;
+    }
     const nextRandomDestinationId = getRandomInt(1, destinations.length);
     const to = {
       pathname: `/destination/${nextRandomDestinationId}`,
@@ -57,9 +60,10 @@ export class Destination extends React.Component<WithRouterProps, IState> {
             <div>{x.flightNumber}</div>
           </div>
         )}
-        {destinationsLoaded ?
-          destinations.filter(x => x.id === id).map(x => x.restaurants.map(y => <div> {y.name}</div>))
-          : null
+        {
+          destination.restaurants.map(y =>
+            <div>{y.name}</div>
+          )
         }
       </div>
     );

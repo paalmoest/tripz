@@ -27,3 +27,4 @@ nuget.exe
 project.lock.json
 *.idea/*
 Api/.idea/*
+package-lock.json
