@@ -13,7 +13,6 @@ async function Init() {
     ),
     document.getElementById('page')
   );
-
 }
 
 Init();

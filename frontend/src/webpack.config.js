@@ -33,7 +33,7 @@ const config = {
       {
         test: /\.less$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'less-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.css$/,
@@ -88,7 +88,6 @@ const config = {
     historyApiFallback: true,
     proxy: {
       '/config': 'http://localhost:3000',
-      '/applicationurls': 'http://localhost:3000',
       '/data': 'http://localhost:3000',
     },
   },
