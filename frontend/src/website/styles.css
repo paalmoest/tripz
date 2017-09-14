@@ -7,6 +7,12 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: Helvetica Neue, Helvetica, "Comic Sans MS", sans-serif;
+    text-align: center;
+}
+
+h1, p {
+    margin-left: 3em;
+    margin-right: 3em;
 }
 
 h1 {
@@ -14,7 +20,7 @@ h1 {
     text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
     opacity: 0;
     animation: appear-from-top ease 0.4s forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.8s;
 }
 
 p {
@@ -22,18 +28,18 @@ p {
     text-shadow: 1px 1px 2px black, 0 0 1em gold, 0 0 0.2em gold;
     opacity: 0;
     animation: appear-from-left ease 0.4s forwards;
-    animation-delay: 0.8s;
+    animation-delay: 1.2s;
 }
 
 p:nth-of-type(2) {
     animation-name: appear-from-right;
-    animation-delay: 1.2s;
+    animation-delay: 1.6s;
     text-shadow: 1px 1px 2px black, 0 0 1em green, 0 0 0.2em green;
 }
 
 p:nth-of-type(3) {
     animation-name: appear-from-bottom;
-    animation-delay: 1.6s;
+    animation-delay: 2.0s;
     text-shadow: 1px 1px 2px black, 0 0 1em red, 0 0 0.2em red;
 }
 
@@ -47,7 +53,6 @@ p:nth-of-type(3) {
         transform: translateX(0);
     }
 }
-
 
 @keyframes appear-from-left {
     from {
