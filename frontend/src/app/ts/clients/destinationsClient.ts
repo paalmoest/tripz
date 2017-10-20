@@ -1,27 +1,25 @@
-
 export interface IData {
-  destinations: IDestination[];
+    destinations: IDestination[];
 }
 
 export interface IDestination {
-  id: number;
-  name: string;
-  cityIATA: string;
-  restaurants: IResturants[];
+    id: number;
+    name: string;
+    cityIATA: string;
+    restaurants: IResturants[];
 }
 
 export interface IResturants {
-  id: number;
-  name: string;
-  address: string;
-  website: string;
-  description: string;
-  gmapsLink: string;
-
+    id: number;
+    name: string;
+    address: string;
+    website: string;
+    description: string;
+    gmapsLink: string;
 }
 // tslint:disable-next-line:export-name
 export async function getDestinations() {
-  const url = 'data';
-  const response = await fetch(url);
-  return <Promise<IData>>response.json();
-};
+    const url = 'data';
+    const response = await fetch(url);
+    return <Promise<IData>>response.json();
+}
