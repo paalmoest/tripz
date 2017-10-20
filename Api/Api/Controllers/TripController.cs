@@ -76,7 +76,7 @@ namespace Api.Controllers
                             MaxStops = 0,
                         }
                     },
-                    Solutions = 10
+                    Solutions = 5
                 }
             };
             var result = service.Trips.Search(x).Execute();
