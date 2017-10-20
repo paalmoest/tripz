@@ -6,6 +6,7 @@ export interface IData {
 export interface IDestination {
   id: number;
   name: string;
+  cityIATA: string;
   restaurants: IResturants[];
 }
 

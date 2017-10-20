@@ -2,7 +2,8 @@
   "destinations": [{
 
       "id": 1,
-      "name": "stockholm",
+      "name": "Stockholm",
+      "cityIATA": "STO",
       "restaurants": [{
           "id": 1,
           "name": "kottfiskbaren",
@@ -23,7 +24,8 @@
     },
     {
       "id": 2,
-      "name": "berlin",
+      "name": "Berlin",
+      "cityIATA": "BER",
       "restaurants": [{
           "id": 1,
           "name": "berlin1",
