@@ -1,52 +1,45 @@
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = {
   entry: {
-    app: './app/index.tsx'
+    app: "./app/index.tsx"
   },
 
   output: {
-    path: '/dist',
-    filename: '[name].js',
+    path: "/dist",
+    filename: "[name].js"
   },
 
   module: {
-    rules: [{
-        test: /\.tsx?/,
-        enforce: 'pre',
-        loader: 'tslint-loader',
-        options: {
-          configFile: 'tslint.json'
-        },
-      },
+    rules: [
       {
         test: /\.js$/,
-        enforce: 'pre',
-        loader: 'source-map-loader'
+        enforce: "pre",
+        loader: "source-map-loader"
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: 'awesome-typescript-loader'
+        loader: "awesome-typescript-loader"
       },
       {
         test: /\.less$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
               namedExport: true,
               camelCase: true,
-              localIdentName: "[name]__[local]___[hash:base64:5]",
+              localIdentName: "[name]__[local]___[hash:base64:5]"
             }
           }
         ]
@@ -54,43 +47,41 @@ const config = {
       {
         test: /\.css$/,
         include: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"]
       }
     ]
   },
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: [".ts", ".tsx", ".js"]
   },
 
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development')
+      "process.env": {
+        NODE_ENV: JSON.stringify("development")
       }
     }),
     new HtmlWebpackPlugin({
-      template: 'index.template.ejs',
-      inject: 'body'
+      template: "index.template.ejs",
+      inject: "body"
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.WatchIgnorePlugin([
-      /css\.d\.ts$/
-    ]),
+    new webpack.WatchIgnorePlugin([/css\.d\.ts$/])
   ],
 
-  devtool: 'source-map',
+  devtool: "source-map",
   devServer: {
     inline: true,
     hot: true,
-    stats: 'errors-only',
+    stats: "errors-only",
     port: 5000,
     historyApiFallback: true,
     proxy: {
-      '/config': 'http://localhost:3000',
-      '/data': 'http://localhost:3000',
-    },
-  },
+      "/config": "http://localhost:3000",
+      "/data": "http://localhost:3000"
+    }
+  }
 };
 
 module.exports = config;

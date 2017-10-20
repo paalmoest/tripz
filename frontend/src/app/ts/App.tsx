@@ -1,71 +1,63 @@
-import * as moment from 'moment';
-import * as React from 'react';
-import { DateRangePicker, FocusedInputShape } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
-import { browserHistory, withRouter, WithRouterProps } from 'react-router';
-import { getDestinations, IDestination } from './clients/destinationsClient';
+import * as moment from "moment";
+import "moment/locale/nb";
+import * as React from "react";
+import { withRouter, WithRouterProps } from "react-router";
+import * as style from "./App.css";
 interface IState {
   startDate: moment.Moment;
   endDate: moment.Moment;
-  focusedInput: FocusedInputShape | null;
-  destinations: IDestination[];
 }
+
+moment.locale("nb");
 
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-// tslint:disable-next-line:no-any
-export class App extends React.Component<WithRouterProps, IState> {
 
+export class App extends React.Component<WithRouterProps, IState> {
   constructor() {
     super();
     this.state = {
       startDate: moment(),
-      endDate: moment(),
-      focusedInput: null,
-      destinations: [],
+      endDate: moment()
     };
   }
 
-  onDateChange = async (args: IState) => {
-    const { startDate, endDate } = args;
-    this.setState({
-      startDate,
-      endDate
-    });
-    if (startDate && endDate) {
-      const data = await getDestinations();
-      const randomDestId = getRandomInt(0, data.destinations.length);
-      const randomDest = data.destinations[randomDestId].id;
-      const updatedPath = {
-        pathname: `/destination/${randomDest}`,
-        query: {
-          startDate: startDate.format('YYYY-MM-DD'),
-          endDate: endDate.format('YYYY-MM-DD'),
-        }
-      };
-      browserHistory.push(updatedPath);
-    }
-  }
-
   render() {
-    const { startDate, endDate, focusedInput } = this.state;
+    const nextThursday = moment().weekday(3);
+    const correspondingSunday = nextThursday.clone().add(3, "days");
+    const numberOfWeeksToShow = 20;
+    let i = 0;
+    const weeks = [];
+    while (i < numberOfWeeksToShow) {
+      weeks.push({
+        first: nextThursday.clone().add(i, "weeks"),
+        last: correspondingSunday.clone().add(i, "weeks")
+      });
+      i++;
+    }
+    const NUMBER_OF_DESTINATIONS = 2;
+    const randomDestinationId = getRandomInt(0, NUMBER_OF_DESTINATIONS);
     return (
-      <div>
-        <h1>Velg dato for din Oooovale weekend</h1>
-        <DateRangePicker
-          startDate={startDate}
-          endDate={endDate}
-          onDatesChange={this.onDateChange}
-          focusedInput={focusedInput}
-          onFocusChange={f => this.setState({ focusedInput: f })}
-          minimumNights={0}
-        />
+      <div className={style.rootContainer}>
+        <h1>Hvilken ovale weekend foretrekker herren?</h1>
+        <div>Alle weekendz er torsdag til søndag</div>
+        <div className={style.weekContainer}>
+          {weeks.map((s, i) => (
+            <a
+              key={i}
+              className={style.weekLinks}
+              href={`/destination/${randomDestinationId}?startDate=${s.first.format(
+                "YYYY-MM-DD"
+              )}&endDate=${s.last.format("YYYY-MM-DD")}`}
+            >
+              {`${s.first.format("D.")} - ${s.last.format("D. MMMM")}`}
+            </a>
+          ))}
+        </div>
       </div>
     );
   }
-
 }
 
-// tslint:disable-next-line:no-default-export export-name
 export default withRouter(App);
