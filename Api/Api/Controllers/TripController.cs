@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.QPXExpress.v1;
 using Google.Apis.QPXExpress.v1.Data;
 using Google.Apis.Services;
@@ -75,7 +76,7 @@ namespace Api.Controllers
                             MaxStops = 0,
                         }
                     },
-                    Solutions = 5
+                    Solutions = 10
                 }
             };
             var result = service.Trips.Search(x).Execute();
@@ -86,8 +87,10 @@ namespace Api.Controllers
                 trips.Add(new Trip
                 {
                     Price = tripOption.SaleTotal,
-                    Airport = tripOption.Slice[0].Segment[0].Leg[0].Destination,
+                    Carrier = result.Trips.Data.Carrier.Single(carrier => carrier.Code == tripOption.Slice[0].Segment[0].Flight.Carrier).Name,
+                    Airports = result.Trips.Data.Airport.Select(airport => new Airport{Code = airport.Code, Name = airport.Name}),
                     DepartrueTime = tripOption.Slice[0].Segment[0].Leg[0].DepartureTime,
+                    ArrivalTime = tripOption.Slice[0].Segment[0].Leg[0].ArrivalTime,
                     FlightNumber = $"{tripOption.Slice[0].Segment[0].Flight.Carrier}{tripOption.Slice[0].Segment[0].Flight.Number}"
                 });
             }
@@ -97,10 +100,19 @@ namespace Api.Controllers
 
     public class Trip
     {
+        public string Carrier { get; set; }
         public string Price { get; set; }
-        public string Airport { get; set; }
+        public IEnumerable<Airport> Airports { get; set; }
         public string DepartrueTime { get; set; }
+        public string ArrivalTime { get; set; }
         public string FlightNumber { get; set; }
+    }
+
+    public class Airport
+    {
+          public string Name { get; set; }
+          public string Code { get; set; }
+            
     }
     
 }

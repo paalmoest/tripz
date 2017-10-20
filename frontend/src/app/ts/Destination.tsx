@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+import 'moment/locale/nb';
 import * as React from 'react';
 import { FocusedInputShape } from 'react-dates';
 import { Link, withRouter, WithRouterProps } from 'react-router';
@@ -11,7 +12,7 @@ interface IState {
   trips: ITrip[];
   destinations: IDestination[];
 }
-
+moment.locale('nb');
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -29,7 +30,7 @@ export class Destination extends React.Component<WithRouterProps, IState> {
 
   async componentWillMount() {
     const { startDate, endDate } = this.props.location.query;
-    const id = parseInt(this.props.params.id, 10)
+    const id = parseInt(this.props.params.id, 10);
     const origin = 'OSL';
     const data = await getDestinations();
     const destination = data.destinations.find(x => x.id === id);
@@ -60,13 +61,13 @@ export class Destination extends React.Component<WithRouterProps, IState> {
         <div className={style.nextDestination}>
           <Link to={to}>GI MÆ NO AINNA</Link>
         </div>
-        <div>Fly til</div>
+        <h2>{moment(startDate).format('dddd Do MMMM')}</h2>
         {trips.map((x, index) =>
           <div key={index} className={style.flightTripItem}>
-            <div>{moment(x.departrueTime).format('MMMM Do YYYY HH:mm')}</div>
-            <div>{x.flightNumber}</div>
+            <div>{moment(x.departrueTime).format('HH:mm')} - {moment(x.arrivalTime).format('HH:mm')}</div>
+            <div>{x.airports[0].name} ({x.airports[0].code}) - {x.airports[1].name} ({x.airports[1].code})</div>
+            <div>{x.carrier}</div>
             <div>{x.price}</div>
-            <div>{x.airport}</div>
           </div>
         )}
         <div className={style.restaurantSectionTitle}>Awesome Resturants</div>

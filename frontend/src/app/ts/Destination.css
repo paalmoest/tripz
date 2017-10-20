@@ -3,13 +3,16 @@
 }
 
 .flightTripItem {
+  font-family: 'Helvetica';
   display: inline-block;
+  border: 1px solid #dedede;
   margin-bottom: 2em;
   margin-right: 1em;
+  padding: 5px;
 }
 
 .restaurantSectionTitle {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Lato';
   font-size: 25px;
   margin-bottom: 1em;
 }
