@@ -1,29 +1,28 @@
 .rootContainer {
-  text-align: center;
-  font-family: "Comic Sans MS", "Comic Sans";
+    text-align: center;
+    font-family: 'Comic Sans MS', 'Comic Sans';
 }
 
 .weekContainer {
-  display: grid;
-  width: 80%;
-  margin: 5em auto 0 auto;
-  grid-template-columns: [first] auto [line2] auto [line3] auto [col4-start] auto [end];
-  grid-template-rows: [row1-start] 25% [row1-end row2-start] 25% [row2-end];
-
+    display: grid;
+    width: 80%;
+    margin: 5em auto 0 auto;
+    grid-template-columns: [first] auto [line2] auto [line3] auto [col4-start] auto [end];
+    grid-template-rows: [row1-start] 25% [row1-end row2-start] 25% [row2-end];
 }
 
 .weekLinks {
-  display: inline-block;
-  cursor: pointer;
-  padding: 0.4em;
-  text-decoration: none;
-  color: #222222;
-  background-color: lightgray;
-  margin: 0.4em;
-  border-radius: 4px;
-  transition: background 0.3s ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0.4em;
+    text-decoration: none;
+    color: #222222;
+    background-color: lightgray;
+    margin: 0.4em;
+    border-radius: 4px;
+    transition: background 0.3s ease-in-out;
 }
 
 .weekLinks:hover {
-  background-color: aqua;
+    background-color: aqua;
 }
