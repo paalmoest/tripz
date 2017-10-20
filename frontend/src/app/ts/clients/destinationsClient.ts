@@ -35,7 +35,6 @@ export interface IResturants {
     gmapsLink: string;
     
 }
-// tslint:disable-next-line:export-name
 export async function getDestinations() {
     const url = 'data';
     const response = await fetch(url);
