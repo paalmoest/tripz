@@ -16,7 +16,6 @@ moment.locale('nb');
 function getRandomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-// tslint:disable-next-line:no-any
 export class Destination extends React.Component<WithRouterProps, IState> {
     constructor(props: WithRouterProps) {
         super(props);
