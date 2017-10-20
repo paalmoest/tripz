@@ -71,7 +71,8 @@ namespace Api.Controllers
                         {
                             Origin = origin, 
                             Destination = destination, 
-                            Date = startDate.ToString("yyyy-MM-dd")
+                            Date = startDate.ToString("yyyy-MM-dd"),
+                            MaxStops = 0,
                         }
                     },
                     Solutions = 5
@@ -84,7 +85,8 @@ namespace Api.Controllers
             {
                 trips.Add(new Trip
                 {
-                    Price =  tripOption.SaleTotal,
+                    Price = tripOption.SaleTotal,
+                    Airport = tripOption.Slice[0].Segment[0].Leg[0].Destination,
                     DepartrueTime = tripOption.Slice[0].Segment[0].Leg[0].DepartureTime,
                     FlightNumber = $"{tripOption.Slice[0].Segment[0].Flight.Carrier}{tripOption.Slice[0].Segment[0].Flight.Number}"
                 });
@@ -96,6 +98,7 @@ namespace Api.Controllers
     public class Trip
     {
         public string Price { get; set; }
+        public string Airport { get; set; }
         public string DepartrueTime { get; set; }
         public string FlightNumber { get; set; }
     }

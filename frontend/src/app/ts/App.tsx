@@ -41,7 +41,7 @@ export class App extends React.Component<WithRouterProps, IState> {
         pathname: `/destination/${randomDest}`,
         query: {
           startDate: startDate.format('YYYY-MM-DD'),
-          endDate: endDate.format('YYYY-MM-DD')
+          endDate: endDate.format('YYYY-MM-DD'),
         }
       };
       browserHistory.push(updatedPath);
