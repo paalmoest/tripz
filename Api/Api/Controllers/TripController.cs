@@ -87,6 +87,7 @@ namespace Api.Controllers
                 trips.Add(new Trip
                 {
                     Price = tripOption.SaleTotal,
+                    Duration = tripOption.Slice[0].Segment[0].Duration.Value,
                     Carrier = result.Trips.Data.Carrier.Single(carrier => carrier.Code == tripOption.Slice[0].Segment[0].Flight.Carrier).Name,
                     Airports = result.Trips.Data.Airport.Select(airport => new Airport{Code = airport.Code, Name = airport.Name}),
                     DepartrueTime = tripOption.Slice[0].Segment[0].Leg[0].DepartureTime,
@@ -105,6 +106,7 @@ namespace Api.Controllers
         public IEnumerable<Airport> Airports { get; set; }
         public string DepartrueTime { get; set; }
         public string ArrivalTime { get; set; }
+        public int Duration { get; set; }
         public string FlightNumber { get; set; }
     }
 
