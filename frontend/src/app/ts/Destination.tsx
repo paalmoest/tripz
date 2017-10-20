@@ -73,6 +73,18 @@ export class Destination extends React.Component<WithRouterProps, IState> {
                         <div>{x.price}</div>
                     </div>
                 ))}
+                <div>
+                    Hotel priser: {destination.accommodations.minPrice} NOK - {destination.accommodations.maxPrice} NOK
+                </div>
+                <div>
+                    Middags priser: {destination.food.dinner.minPrice} NOK - {destination.food.dinner.maxPrice} NOK
+                </div>
+                <div>
+                    Øl: {destination.drinks.beer.minPrice} NOK - {destination.drinks.beer.maxPrice} NOK
+                </div>
+                <div>
+                    Chill flaske Cava: {destination.drinks.cava.minPrice} NOK - {destination.drinks.cava.maxPrice} NOK
+                </div>
                 <div className={style.restaurantSectionTitle}>Awesome Resturants</div>
                 <div>
                     {destination.restaurants.map(x => (

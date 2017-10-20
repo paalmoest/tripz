@@ -7,6 +7,23 @@ export interface IDestination {
     name: string;
     cityIATA: string;
     restaurants: IResturants[];
+    accommodations: IPricing;
+    food: IFood;
+    drinks: IDrinks;
+}
+
+export interface IPricing {
+  minPrice: number;
+  maxPrice: number;
+}
+
+
+export interface IDrinks{
+  beer: IPricing;
+  cava: IPricing;
+}
+export interface IFood{
+  dinner: IPricing;
 }
 
 export interface IResturants {
@@ -16,6 +33,7 @@ export interface IResturants {
     website: string;
     description: string;
     gmapsLink: string;
+    
 }
 // tslint:disable-next-line:export-name
 export async function getDestinations() {
