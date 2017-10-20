@@ -8,7 +8,7 @@
     "build": "webpack --config webpack.prod.config.js",
     "server": "node server"
   },
-  "author": "Bekk Forvaltning",
+  "author": "Ovaale guttær",
   "license": "ISC",
   "typings": "typings/index.d.ts",
   "dependencies": {
