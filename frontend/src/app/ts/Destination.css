@@ -49,16 +49,30 @@
 
 .hotelIcon {
     color: darkblue;
+    animation: rotate 2s linear infinite;
 }
 
 .dinnerIcon {
     color: brown;
-}
-
-.glassIcon {
-    color: lightgreen;
+    animation: rotate 2s 0.5s linear infinite;
 }
 
 .beerIcon {
     color: gold;
+    animation: rotate 2s 1s linear infinite;
+}
+
+.glassIcon {
+    color: lightgreen;
+    animation: rotate 2s 1.5s linear infinite;
+}
+
+@keyframes rotate {
+    25% {
+        transform: rotateZ(360deg);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
 }
