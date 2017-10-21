@@ -1,18 +1,34 @@
+.rootContainer {
+    text-align: center;
+    font-family: 'Verdana';
+}
+
+.internalContainer {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.time {
+    font-weight: bold;
+}
+
+.date {
+    text-transform: uppercase;
+}
+
 .nextDestination {
     margin-bottom: 2em;
 }
 
 .flightTripItem {
-    font-family: 'Helvetica';
     display: inline-block;
     border: 1px solid #dedede;
     margin-bottom: 2em;
     margin-right: 1em;
-    padding: 5px;
+    padding: 0.5em;
 }
 
 .restaurantSectionTitle {
-    font-family: 'Lato';
     font-size: 25px;
     margin-bottom: 1em;
 }
@@ -20,4 +36,9 @@
 .restaurantItem {
     display: inline-block;
     margin-right: 0.5em;
+}
+
+.carrier {
+    color: gray;
+    font-size: 75%;
 }

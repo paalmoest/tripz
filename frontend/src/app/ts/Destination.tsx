@@ -16,6 +16,24 @@ moment.locale('nb');
 function getRandomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function formatNOK(amountInNok: string) {
+    let stripped = amountInNok.slice(3);
+    return formatMoneyString(stripped);
+}
+function formatMoneyString(amount: string) {
+    let i = amount.length;
+    while (i > 3) {
+        amount = amount.slice(0, i - 3) + ' ' + amount.slice(i - 3);
+        i = i - 3;
+    }
+    return `${amount} kr`;
+}
+
+function formatMoneyNumber(amount: number) {
+    return formatMoneyString(`${amount}`);
+}
+
 export class Destination extends React.Component<WithRouterProps, IState> {
     constructor(props: WithRouterProps) {
         super(props);
@@ -55,42 +73,53 @@ export class Destination extends React.Component<WithRouterProps, IState> {
             },
         };
         return (
-            <div>
-                <div className={style.nextDestination}>
-                    <Link to={to}>GI MÆ NO AINNA</Link>
-                </div>
-                <h2>{moment(startDate).format('dddd Do MMMM')}</h2>
-                {trips.map((x, index) => (
-                    <div key={index} className={style.flightTripItem}>
-                        <div>
-                            {moment(x.departrueTime).format('HH:mm')} - {moment(x.arrivalTime).format('HH:mm')}
-                        </div>
-                        <div>
-                            {x.airports[0].name} ({x.airports[0].code}) - {x.airports[1].name} ({x.airports[1].code})
-                        </div>
-                        <div>{x.carrier}</div>
-                        <div>{x.price}</div>
+            <div className={style.rootContainer}>
+                <div className={style.internalContainer}>
+                    <div className={style.nextDestination}>
+                        <Link to={to}>GI MÆ NO AINNA</Link>
                     </div>
-                ))}
-                <div>
-                    Hotel priser: {destination.accommodations.minPrice} NOK - {destination.accommodations.maxPrice} NOK
-                </div>
-                <div>
-                    Middags priser: {destination.food.dinner.minPrice} NOK - {destination.food.dinner.maxPrice} NOK
-                </div>
-                <div>
-                    Øl: {destination.drinks.beer.minPrice} NOK - {destination.drinks.beer.maxPrice} NOK
-                </div>
-                <div>
-                    Chill flaske Cava: {destination.drinks.cava.minPrice} NOK - {destination.drinks.cava.maxPrice} NOK
-                </div>
-                <div className={style.restaurantSectionTitle}>Awesome Resturants</div>
-                <div>
-                    {destination.restaurants.map(x => (
-                        <div key={x.id} className={style.restaurantItem}>
-                            {x.name}
+                    <h2 className={style.date}>{`${moment(startDate).format(
+                        'dddd Do MMMM'
+                    )} fra Oslo Gardermoen (OSL)`}</h2>
+                    {trips.map((x, index) => (
+                        <div key={index} className={style.flightTripItem}>
+                            <div>
+                                <span className={style.time}>
+                                    {moment(x.departrueTime).format('HH:mm')} - {moment(x.arrivalTime).format('HH:mm')}
+                                </span>
+                                {` (${Math.floor(x.duration / 60)} timer ${x.duration % 60} minutter)`}
+                            </div>
+                            <div>
+                                {x.airports[1].name} {x.airports[1].code}
+                            </div>
+                            <div>{formatNOK(x.price)}</div>
+                            <div className={style.carrier}>{x.carrier}</div>
                         </div>
                     ))}
+                    <div>
+                        Hotel priser: {formatMoneyNumber(destination.accommodations.minPrice)} -{' '}
+                        {formatMoneyNumber(destination.accommodations.maxPrice)}
+                    </div>
+                    <div>
+                        Middags priser: {formatMoneyNumber(destination.food.dinner.minPrice)} -{' '}
+                        {formatMoneyNumber(destination.food.dinner.maxPrice)}
+                    </div>
+                    <div>
+                        Øl: {formatMoneyNumber(destination.drinks.beer.minPrice)} -{' '}
+                        {formatMoneyNumber(destination.drinks.beer.maxPrice)}
+                    </div>
+                    <div>
+                        Chill flaske Cava: {formatMoneyNumber(destination.drinks.cava.minPrice)} -{' '}
+                        {formatMoneyNumber(destination.drinks.cava.maxPrice)}
+                    </div>
+                    <div className={style.restaurantSectionTitle}>Awesome Resturants</div>
+                    <div>
+                        {destination.restaurants.map(x => (
+                            <div key={x.id} className={style.restaurantItem}>
+                                {x.name}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         );

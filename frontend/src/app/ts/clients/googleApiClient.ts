@@ -6,6 +6,7 @@ export interface ITrip {
     arrivalTime: string;
     carrier: string;
     flightNumber: string;
+    duration: number;
     airports: IAirport[];
 }
 
