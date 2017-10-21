@@ -42,3 +42,23 @@
     color: gray;
     font-size: 75%;
 }
+
+.infoContainer {
+    margin-bottom: 3em;
+}
+
+.hotelIcon {
+    color: darkblue;
+}
+
+.dinnerIcon {
+    color: brown;
+}
+
+.glassIcon {
+    color: lightgreen;
+}
+
+.beerIcon {
+    color: gold;
+}

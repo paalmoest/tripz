@@ -96,21 +96,27 @@ export class Destination extends React.Component<WithRouterProps, IState> {
                             <div className={style.carrier}>{x.carrier}</div>
                         </div>
                     ))}
-                    <div>
-                        Hotel priser: {formatMoneyNumber(destination.accommodations.minPrice)} -{' '}
-                        {formatMoneyNumber(destination.accommodations.maxPrice)}
-                    </div>
-                    <div>
-                        Middags priser: {formatMoneyNumber(destination.food.dinner.minPrice)} -{' '}
-                        {formatMoneyNumber(destination.food.dinner.maxPrice)}
-                    </div>
-                    <div>
-                        Øl: {formatMoneyNumber(destination.drinks.beer.minPrice)} -{' '}
-                        {formatMoneyNumber(destination.drinks.beer.maxPrice)}
-                    </div>
-                    <div>
-                        Chill flaske Cava: {formatMoneyNumber(destination.drinks.cava.minPrice)} -{' '}
-                        {formatMoneyNumber(destination.drinks.cava.maxPrice)}
+                    <div className={style.infoContainer}>
+                        <div>
+                            <i className={'fa fa-bed ' + style.hotelIcon} aria-hidden="true" /> Hotellpriser:{' '}
+                            {formatMoneyNumber(destination.accommodations.minPrice)} -{' '}
+                            {formatMoneyNumber(destination.accommodations.maxPrice)}
+                        </div>
+                        <div>
+                            <i className={'fa fa-cutlery ' + style.dinnerIcon} aria-hidden="true" /> Middagspriser:{' '}
+                            {formatMoneyNumber(destination.food.dinner.minPrice)} -{' '}
+                            {formatMoneyNumber(destination.food.dinner.maxPrice)}
+                        </div>
+                        <div>
+                            <i className={'fa fa-beer ' + style.beerIcon} aria-hidden="true" /> Øl:{' '}
+                            {formatMoneyNumber(destination.drinks.beer.minPrice)} -{' '}
+                            {formatMoneyNumber(destination.drinks.beer.maxPrice)}
+                        </div>
+                        <div>
+                            <i className={'fa fa-glass ' + style.glassIcon} aria-hidden="true" /> Chill flaske Cava:{' '}
+                            {formatMoneyNumber(destination.drinks.cava.minPrice)} -{' '}
+                            {formatMoneyNumber(destination.drinks.cava.maxPrice)}
+                        </div>
                     </div>
                     <div className={style.restaurantSectionTitle}>Awesome Resturants</div>
                     <div>
