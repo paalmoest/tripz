@@ -80,6 +80,7 @@ const config = {
         proxy: {
             '/config': 'http://localhost:3000',
             '/data': 'http://localhost:3000',
+            '/api': 'http://localhost:5001',
         },
     },
 };
