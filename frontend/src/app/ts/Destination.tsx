@@ -78,7 +78,7 @@ export class Destination extends React.Component<WithRouterProps, IState> {
                     <header
                         className={style.headerSection}
                         style={{
-                            backgroundImage: `url(../../images/${destination.styling.coverImage}`,
+                            backgroundImage: `url(/dist/images/${destination.styling.coverImage}`,
                             backgroundPosition: destination.styling.backgroundImagePosition,
                         }}
                     >
