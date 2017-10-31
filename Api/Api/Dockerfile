@@ -4,5 +4,4 @@ WORKDIR /dotnetapp/
 ENV ASPNETCORE_URLS=http://+:80
 RUN dotnet restore
 RUN dotnet build -c release
-WORKDIR /dotnetapp/build/
 ENTRYPOINT ["dotnet", "bin/Release/netcoreapp2.0/Api.dll"]
