@@ -26,12 +26,12 @@ defaultEntryPoints = ["http"]
     entrypoints = ["http"]
     backend = "oval_backend"
     [frontends.oval_frontend.routes.rute_1]
-      rule = "Host: ovalbackend.no; PathPrefixStrip: /api/"
+      rule = "Host: ovalweekend.no; PathPrefixStrip: /api/"
   [frontends.oval_backend]
     entrypoints = ["http"]
     backend = "oval_frontend"
     [frontends.faktura_app_dev.routes.rute_1]
-      rule = "Host: ovalbackend.no"    
+      rule = "Host: ovalweekend.no"    
  
     
 
