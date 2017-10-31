@@ -33,7 +33,13 @@ h1 {
 
 .priceSection {
     background-color: #f2bb15;
-    color: white;
+    color: black;
+    padding-bottom: 80px;
+}
+
+.priceInfoContainer {
+    margin-left: 15%;
+    font-size: 34px;
 }
 
 .time {
