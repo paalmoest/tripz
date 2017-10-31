@@ -1,0 +1,41 @@
+[web]
+
+# Web administration port.
+address = ":8080"
+
+readOnly = true
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"
+    compress = true
+
+defaultEntryPoints = ["http"]
+
+[file]
+[backends]
+  [backends.oval_backend]
+    [backends.oval_backend.servers.server1]
+      url = "http://backend:80"
+  [backends.oval_frontend]
+    [backends.oval_frontend.servers.server1]
+      url = "http://frontend:80"    
+
+[frontends]
+  [frontends.oval_backend_frontend]
+    entrypoints = ["http"]
+    backend = "oval_backend"
+    [frontends.oval_backend_frontend.routes.rute_1]
+      rule = "Host: api.ovalweekend.no"
+  [frontends.oval_frontend]
+    entrypoints = ["http"]
+    backend = "oval_frontend"
+    [frontends.oval_frontend.routes.rute_1]
+      rule = "Host: ovalweekend.no"    
+ 
+    
+
+
+
+
+          
