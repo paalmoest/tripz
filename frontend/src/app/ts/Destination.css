@@ -1,40 +1,49 @@
 .rootContainer {
     composes: rootContainer from './App.css';
+    text-align: left;
 }
 
-.internalContainer {
-    margin: 0 auto;
-    width: 80%;
+/*@color-black: #000000;*/
+/*@color-grey-dark: #353740;*/
+/*@color-blue: #006dff;*/
+/*@color-white: #ffffff;*/
+/*@mustard-yellow: #f2bb15;*/
+
+body {
+    margin: 0;
 }
 
-.time {
-    font-weight: bold;
+.headerSection {
+    color: #353740;
+    background-size: cover;
+    height: 600px;
+}
+
+h1 {
+    font-size: 150px;
+    line-height: 78%;
+    margin: 0 0 0 -8px;
+    text-transform: uppercase;
+}
+
+.flightsContainer {
+    text-align: center;
+}
+
+.priceSection {
+    color: black;
+    padding-bottom: 80px;
+}
+
+.priceInfoContainer {
+    margin-left: 15%;
+    font-size: 34px;
 }
 
 .date {
     text-transform: uppercase;
-}
-
-.nextDestination {
-    margin-bottom: 2em;
-}
-
-.flightTripItem {
-    display: inline-block;
-    border: 1px solid #dedede;
-    margin-bottom: 2em;
-    margin-right: 1em;
-    padding: 0.5em;
-}
-
-.restaurantSectionTitle {
-    font-size: 25px;
-    margin-bottom: 1em;
-}
-
-.restaurantItem {
-    display: inline-block;
-    margin-right: 0.5em;
+    margin: 0;
+    font-size: 45px;
 }
 
 .carrier {
@@ -42,36 +51,42 @@
     font-size: 75%;
 }
 
-.infoContainer {
-    margin-bottom: 3em;
+.flightTripItem {
+    background-color: white;
+    color: #353740;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2em;
+    margin-right: 1em;
+    padding: 0.5em;
+    height: 126px;
+    width: 250px;
+    position: relative;
+    top: -70px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
-.hotelIcon {
-    color: darkblue;
-    animation: rotate 2s linear infinite;
+.thingsToDoSection {
+    text-align: right;
+    margin-right: 15%;
 }
 
-.dinnerIcon {
-    color: brown;
-    animation: rotate 2s 0.5s linear infinite;
+.thingsToDoSectionTitle {
+    color: white;
+    font-size: 34px;
+    margin: 0 0 12px;
+    line-height: 88%;
+    position: relative;
+    top: calc(-34px * 0.78);
+    text-transform: uppercase;
 }
 
-.beerIcon {
-    color: gold;
-    animation: rotate 2s 1s linear infinite;
+.restaurantItem {
+    font-size: 34px;
 }
 
-.glassIcon {
-    color: lightgreen;
-    animation: rotate 2s 1.5s linear infinite;
-}
-
-@keyframes rotate {
-    25% {
-        transform: rotateZ(360deg);
-    }
-
-    to {
-        transform: rotateZ(360deg);
-    }
+.changeDestination {
+    display: none;
 }

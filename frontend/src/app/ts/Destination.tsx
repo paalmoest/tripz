@@ -75,58 +75,72 @@ export class Destination extends React.Component<WithRouterProps, IState> {
         return (
             <div className={style.rootContainer}>
                 <div className={style.internalContainer}>
-                    <div className={style.nextDestination}>
-                        <Link to={to}>GI MÆ NO AINNA</Link>
-                    </div>
-                    <h2 className={style.date}>{`${moment(startDate).format(
-                        'dddd Do MMMM'
-                    )} fra Oslo Gardermoen (OSL)`}</h2>
-                    {trips.map((x, index) => (
-                        <div key={index} className={style.flightTripItem}>
+                    <header
+                        className={style.headerSection}
+                        style={{
+                            backgroundImage: `url(https://s3.eu-central-1.amazonaws.com/ovalweekend/${destination
+                                .styling.coverImage}`,
+                            backgroundPosition: destination.styling.backgroundImagePosition,
+                        }}
+                    >
+                        <h1>{destination.name}</h1>
+                        <p className={style.date}>{`${moment(startDate).format('dddd Do MMMM')}`}</p>
+                    </header>
+                    <section
+                        className={style.priceSection}
+                        style={{ backgroundColor: destination.styling.backgroundColor }}
+                    >
+                        <div className={style.flightsContainer}>
+                            {trips.map((x, index) => (
+                                <div key={index} className={style.flightTripItem}>
+                                    <div>
+                                        <span>
+                                            {moment(x.departrueTime).format('HH:mm')} -{' '}
+                                            {moment(x.arrivalTime).format('HH:mm')}
+                                        </span>
+                                        {` (${Math.floor(x.duration / 60)} t ${x.duration % 60} m)`}
+                                    </div>
+                                    <div>
+                                        {x.airports[1].name} {x.airports[1].code}
+                                    </div>
+                                    <div>{formatNOK(x.price)}</div>
+                                    <div className={style.carrier}>{x.carrier}</div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className={style.priceInfoContainer}>
                             <div>
-                                <span className={style.time}>
-                                    {moment(x.departrueTime).format('HH:mm')} - {moment(x.arrivalTime).format('HH:mm')}
-                                </span>
-                                {` (${Math.floor(x.duration / 60)} timer ${x.duration % 60} minutter)`}
+                                Hotellpriser {formatMoneyNumber(destination.accommodations.minPrice)} -{' '}
+                                {formatMoneyNumber(destination.accommodations.maxPrice)}
                             </div>
                             <div>
-                                {x.airports[1].name} {x.airports[1].code}
+                                Middagspriser {formatMoneyNumber(destination.food.dinner.minPrice)} -{' '}
+                                {formatMoneyNumber(destination.food.dinner.maxPrice)}
                             </div>
-                            <div>{formatNOK(x.price)}</div>
-                            <div className={style.carrier}>{x.carrier}</div>
-                        </div>
-                    ))}
-                    <div className={style.infoContainer}>
-                        <div>
-                            <i className={'fa fa-bed ' + style.hotelIcon} aria-hidden="true" /> Hotellpriser:{' '}
-                            {formatMoneyNumber(destination.accommodations.minPrice)} -{' '}
-                            {formatMoneyNumber(destination.accommodations.maxPrice)}
-                        </div>
-                        <div>
-                            <i className={'fa fa-cutlery ' + style.dinnerIcon} aria-hidden="true" /> Middagspriser:{' '}
-                            {formatMoneyNumber(destination.food.dinner.minPrice)} -{' '}
-                            {formatMoneyNumber(destination.food.dinner.maxPrice)}
-                        </div>
-                        <div>
-                            <i className={'fa fa-beer ' + style.beerIcon} aria-hidden="true" /> Øl:{' '}
-                            {formatMoneyNumber(destination.drinks.beer.minPrice)} -{' '}
-                            {formatMoneyNumber(destination.drinks.beer.maxPrice)}
-                        </div>
-                        <div>
-                            <i className={'fa fa-glass ' + style.glassIcon} aria-hidden="true" /> Chill flaske Cava:{' '}
-                            {formatMoneyNumber(destination.drinks.cava.minPrice)} -{' '}
-                            {formatMoneyNumber(destination.drinks.cava.maxPrice)}
-                        </div>
-                    </div>
-                    <div className={style.restaurantSectionTitle}>Awesome Resturants</div>
-                    <div>
-                        {destination.restaurants.map(x => (
-                            <div key={x.id} className={style.restaurantItem}>
-                                {x.name}
+                            <div>
+                                Øl {formatMoneyNumber(destination.drinks.beer.minPrice)} -{' '}
+                                {formatMoneyNumber(destination.drinks.beer.maxPrice)}
                             </div>
-                        ))}
-                    </div>
+                            <div>
+                                Chill flaske Cava {formatMoneyNumber(destination.drinks.cava.minPrice)} -{' '}
+                                {formatMoneyNumber(destination.drinks.cava.maxPrice)}
+                            </div>
+                        </div>
+                    </section>
+                    <section className={style.thingsToDoSection}>
+                        <h2 className={style.thingsToDoSectionTitle}>Ting å gjøre</h2>
+                        <div>
+                            {destination.restaurants.map(x => (
+                                <div key={x.id} className={style.restaurantItem}>
+                                    {x.name}
+                                </div>
+                            ))}
+                        </div>
+                    </section>
                 </div>
+                <Link to={to} className={style.changeDestination}>
+                    GI MÆ NO AINNA
+                </Link>
             </div>
         );
     }

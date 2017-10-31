@@ -49,6 +49,13 @@ const config = {
                 include: /node_modules/,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: [
+                    'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+                    'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false',
+                ],
+            },
         ],
     },
 
@@ -81,6 +88,7 @@ const config = {
             '/config': 'http://localhost:3000',
             '/data': 'http://localhost:3000',
             '/api': 'http://localhost:5001',
+            '/images': 'http://localhost:3000',
         },
     },
 };

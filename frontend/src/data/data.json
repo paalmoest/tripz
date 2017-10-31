@@ -5,24 +5,24 @@
             "name": "Stockholm",
             "cityIATA": "STO",
             "accommodations": {
-              "minPrice": 800,
-              "maxPrice": 1500
+                "minPrice": 800,
+                "maxPrice": 1500
             },
             "food": {
-              "dinner": {
-                "minPrice": 150,
-                "maxPrice": 250
-              }
+                "dinner": {
+                    "minPrice": 150,
+                    "maxPrice": 250
+                }
             },
             "drinks": {
-              "beer": {
-                "minPrice": 50,
-                "maxPrice": 85
-              },
-              "cava": {
-                "minPrice": 50,
-                "maxPrice": 10000
-              }
+                "beer": {
+                    "minPrice": 50,
+                    "maxPrice": 85
+                },
+                "cava": {
+                    "minPrice": 50,
+                    "maxPrice": 10000
+                }
             },
             "restaurants": [
                 {
@@ -41,31 +41,36 @@
                     "description": "",
                     "gmapsLink": "https://goo.gl/maps/Yfes7aVegYK2"
                 }
-            ]
+            ],
+            "styling": {
+                "coverImage": "stockholm.jpg",
+                "backgroundColor": "#1da3ff",
+                "backgroundImagePosition": "50% 40%"
+            }
         },
         {
             "id": 2,
             "name": "Berlin",
             "cityIATA": "BER",
             "accommodations": {
-              "minPrice": 800,
-              "maxPrice": 250
+                "minPrice": 800,
+                "maxPrice": 250
             },
             "food": {
-              "dinner": {
-                "minPrice": 100,
-                "maxPrice": 250
-              }
+                "dinner": {
+                    "minPrice": 100,
+                    "maxPrice": 250
+                }
             },
             "drinks": {
-              "beer": {
-                "minPrice": 50,
-                "maxPrice": 85
-              },
-              "cava": {
-                "minPrice": 50,
-                "maxPrice": 10000
-              }
+                "beer": {
+                    "minPrice": 50,
+                    "maxPrice": 85
+                },
+                "cava": {
+                    "minPrice": 50,
+                    "maxPrice": 10000
+                }
             },
             "restaurants": [
                 {
@@ -84,51 +89,60 @@
                     "description": "",
                     "gmapsLink": "https://goo.gl/maps/Yfes7aVegYK2"
                 }
-            ]
+            ],
+            "styling": {
+                "coverImage": "berlin.jpg",
+                "backgroundColor": "#f2bb15",
+                "backgroundImagePosition": "50% 69%"
+            }
         },
-
         {
-          "id": 2,
-          "name": "Paris",
-          "cityIATA": "PAR",
-          "accommodations": {
-            "minPrice": 1000,
-            "maxPrice": 1500
-          },
-          "food": {
-            "dinner": {
-              "minPrice": 150,
-              "maxPrice": 250
-            }
-          },
-          "drinks": {
-            "beer": {
-              "minPrice": 50,
-              "maxPrice": 85
+            "id": 3,
+            "name": "Paris",
+            "cityIATA": "PAR",
+            "accommodations": {
+                "minPrice": 1000,
+                "maxPrice": 1500
             },
-            "cava": {
-              "minPrice": 50,
-              "maxPrice": 10000
+            "food": {
+                "dinner": {
+                    "minPrice": 150,
+                    "maxPrice": 250
+                }
+            },
+            "drinks": {
+                "beer": {
+                    "minPrice": 50,
+                    "maxPrice": 85
+                },
+                "cava": {
+                    "minPrice": 50,
+                    "maxPrice": 10000
+                }
+            },
+            "restaurants": [
+                {
+                    "id": 1,
+                    "name": "berlin1",
+                    "address": "gamla, Gamla Brogatan 40, 111 20 Stockholm, Sverige",
+                    "link": "kottfiskbaren.se",
+                    "description": "",
+                    "gmapsLink": "https://goo.gl/maps/NjZZ9SUb8EH2"
+                },
+                {
+                    "id": 2,
+                    "name": "berlin2",
+                    "address": "14 Artillerigatan, Stockholm 114 51, Sverige",
+                    "link": "http://speceriet.se",
+                    "description": "",
+                    "gmapsLink": "https://goo.gl/maps/Yfes7aVegYK2"
+                }
+            ],
+            "styling": {
+                "coverImage": "paris.jpg",
+                "backgroundColor": "#EF4135",
+                "backgroundImagePosition": "50% 53%"
             }
-          },
-          "restaurants": [
-              {
-                  "id": 1,
-                  "name": "berlin1",
-                  "address": "gamla, Gamla Brogatan 40, 111 20 Stockholm, Sverige",
-                  "link": "kottfiskbaren.se",
-                  "description": "",
-                  "gmapsLink": "https://goo.gl/maps/NjZZ9SUb8EH2"
-              },
-              {
-                  "id": 2,
-                  "name": "berlin2",
-                  "address": "14 Artillerigatan, Stockholm 114 51, Sverige",
-                  "link": "http://speceriet.se",
-                  "description": "",
-                  "gmapsLink": "https://goo.gl/maps/Yfes7aVegYK2"
-              }
-          ]
-      }
+        }
     ]
 }
