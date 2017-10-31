@@ -19,7 +19,7 @@ defaultEntryPoints = ["http"]
       url = "http://backend:80"
   [backends.oval_frontend]
     [backends.oval_frontend.servers.server1]
-      url = "http://frontend:5001"    
+      url = "http://frontend:80"    
 
 [frontends]
   [frontends.oval_frontend]
