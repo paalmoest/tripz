@@ -1,6 +1,5 @@
 .rootContainer {
-    text-align: center;
-    font-family: 'Verdana';
+    composes: rootContainer from './App.css';
 }
 
 .internalContainer {
