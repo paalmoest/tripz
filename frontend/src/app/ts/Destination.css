@@ -42,18 +42,15 @@ h1 {
     font-size: 34px;
 }
 
-.time {
-    font-weight: bold;
-}
-
 .date {
     text-transform: uppercase;
     margin: 0;
     font-size: 45px;
 }
 
-.nextDestination {
-    margin-bottom: 2em;
+.carrier {
+    color: gray;
+    font-size: 75%;
 }
 
 .flightTripItem {
@@ -73,51 +70,25 @@ h1 {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
-.restaurantSectionTitle {
-    font-size: 25px;
-    margin-bottom: 1em;
+.thingsToDoSection {
+    text-align: right;
+    margin-right: 15%;
+}
+
+.thingsToDoSectionTitle {
+    color: white;
+    font-size: 34px;
+    margin: 0 0 12px;
+    line-height: 88%;
+    position: relative;
+    top: calc(-34px * 0.78);
+    text-transform: uppercase;
 }
 
 .restaurantItem {
-    display: inline-block;
-    margin-right: 0.5em;
+    font-size: 34px;
 }
 
-.carrier {
-    color: gray;
-    font-size: 75%;
-}
-
-.infoContainer {
-    margin-bottom: 3em;
-}
-
-.hotelIcon {
-    color: darkblue;
-    animation: rotate 2s linear infinite;
-}
-
-.dinnerIcon {
-    color: brown;
-    animation: rotate 2s 0.5s linear infinite;
-}
-
-.beerIcon {
-    color: gold;
-    animation: rotate 2s 1s linear infinite;
-}
-
-.glassIcon {
-    color: lightgreen;
-    animation: rotate 2s 1.5s linear infinite;
-}
-
-@keyframes rotate {
-    25% {
-        transform: rotateZ(360deg);
-    }
-
-    to {
-        transform: rotateZ(360deg);
-    }
+.changeDestination {
+    display: none;
 }
