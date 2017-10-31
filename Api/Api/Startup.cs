@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Api
 {
@@ -32,7 +26,7 @@ namespace Api
                 options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()));
-            services.Configure<GoogleApiOptions>(Configuration);
+            services.Configure<Apikeys>(Configuration);
             services.AddMvc();
         }
 
@@ -49,9 +43,9 @@ namespace Api
         }
     }
 
-    public class GoogleApiOptions
+    public class Apikeys
     {
-        
         public string ApiKey { get; set; }
+        public string FacebookApikey { get; set; }
     }
 }

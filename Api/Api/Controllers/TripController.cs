@@ -11,9 +11,9 @@ namespace Api.Controllers
 {
     public class TripController : Controller
     {
-        private readonly GoogleApiOptions _options;
+        private readonly Apikeys _options;
 
-        public TripController(IOptions<GoogleApiOptions> options)
+        public TripController(IOptions<Apikeys> options)
         {
             _options = options.Value;
         }
