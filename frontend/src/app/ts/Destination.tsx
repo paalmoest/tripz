@@ -75,11 +75,20 @@ export class Destination extends React.Component<WithRouterProps, IState> {
         return (
             <div className={style.rootContainer}>
                 <div className={style.internalContainer}>
-                    <header className={style.headerSection}>
+                    <header
+                        className={style.headerSection}
+                        style={{
+                            backgroundImage: `url(../../images/${destination.styling.coverImage}`,
+                            backgroundPosition: destination.styling.backgroundImagePosition,
+                        }}
+                    >
                         <h1>{destination.name}</h1>
                         <p className={style.date}>{`${moment(startDate).format('dddd Do MMMM')}`}</p>
                     </header>
-                    <section className={style.priceSection}>
+                    <section
+                        className={style.priceSection}
+                        style={{ backgroundColor: destination.styling.backgroundColor }}
+                    >
                         <div className={style.flightsContainer}>
                             {trips.map((x, index) => (
                                 <div key={index} className={style.flightTripItem}>

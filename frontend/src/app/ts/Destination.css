@@ -7,14 +7,13 @@
 /*@color-grey-dark: #353740;*/
 /*@color-blue: #006dff;*/
 /*@color-white: #ffffff;*/
-/*@mustard-white: #f2bb15;*/
+/*@mustard-yellow: #f2bb15;*/
 
 body {
     margin: 0;
 }
 
 .headerSection {
-    background: url('../../images/berlin_shrunk.jpg') 50% 69%;
     color: #353740;
     background-size: cover;
     height: 600px;
@@ -32,7 +31,6 @@ h1 {
 }
 
 .priceSection {
-    background-color: #f2bb15;
     color: black;
     padding-bottom: 80px;
 }
