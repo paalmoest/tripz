@@ -15,7 +15,7 @@ interface IAirport {
     code: string;
 }
 export async function getTrips(startDate: moment.Moment, endDate: moment.Moment, origin: string, destination: string) {
-    const url = `api/trips?startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&destination=${destination}&origin=${origin}&adultcount=1`;
+    const url = `http://api.ovalweekend.no/api/trips?startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&destination=${destination}&origin=${origin}&adultcount=1`;
     const response = await fetch(url);
     return <Promise<ITrip[]>>response.json();
 }
