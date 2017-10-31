@@ -1,10 +1,39 @@
 .rootContainer {
     composes: rootContainer from './App.css';
+    text-align: left;
 }
 
-.internalContainer {
-    margin: 0 auto;
-    width: 80%;
+/*@color-black: #000000;*/
+/*@color-grey-dark: #353740;*/
+/*@color-blue: #006dff;*/
+/*@color-white: #ffffff;*/
+/*@mustard-white: #f2bb15;*/
+
+body {
+    margin: 0;
+}
+
+.headerSection {
+    background: url('../../images/berlin_shrunk.jpg') 50% 69%;
+    color: #353740;
+    background-size: cover;
+    height: 600px;
+}
+
+h1 {
+    font-size: 150px;
+    line-height: 78%;
+    margin: 0 0 0 -8px;
+    text-transform: uppercase;
+}
+
+.flightsContainer {
+    text-align: center;
+}
+
+.priceSection {
+    background-color: #f2bb15;
+    color: white;
 }
 
 .time {
@@ -13,6 +42,8 @@
 
 .date {
     text-transform: uppercase;
+    margin: 0;
+    font-size: 45px;
 }
 
 .nextDestination {
@@ -20,11 +51,20 @@
 }
 
 .flightTripItem {
-    display: inline-block;
-    border: 1px solid #dedede;
+    background-color: white;
+    color: #353740;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin-bottom: 2em;
     margin-right: 1em;
     padding: 0.5em;
+    height: 126px;
+    width: 250px;
+    position: relative;
+    top: -70px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 .restaurantSectionTitle {

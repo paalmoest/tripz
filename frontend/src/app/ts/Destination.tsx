@@ -75,27 +75,55 @@ export class Destination extends React.Component<WithRouterProps, IState> {
         return (
             <div className={style.rootContainer}>
                 <div className={style.internalContainer}>
-                    <div className={style.nextDestination}>
-                        <Link to={to}>GI MÆ NO AINNA</Link>
-                    </div>
+                    <header className={style.headerSection}>
+                        <h1>{destination.name}</h1>
+                        <p className={style.date}>{`${moment(startDate).format('dddd Do MMMM')}`}</p>
+                    </header>
+                    <section className={style.priceSection}>
+                        <div className={style.flightsContainer}>
+                            {trips.map((x, index) => (
+                                <div key={index} className={style.flightTripItem}>
+                                    <div>
+                                        <span className={style.time}>
+                                            {moment(x.departrueTime).format('HH:mm')} -{' '}
+                                            {moment(x.arrivalTime).format('HH:mm')}
+                                        </span>
+                                        {` (${Math.floor(x.duration / 60)} t ${x.duration % 60} m)`}
+                                    </div>
+                                    <div>
+                                        {x.airports[1].name} {x.airports[1].code}
+                                    </div>
+                                    <div>{formatNOK(x.price)}</div>
+                                    <div className={style.carrier}>{x.carrier}</div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className={style.infoContainer}>
+                            <div>
+                                <i className={'fa fa-bed ' + style.hotelIcon} aria-hidden="true" /> Hotellpriser:{' '}
+                                {formatMoneyNumber(destination.accommodations.minPrice)} -{' '}
+                                {formatMoneyNumber(destination.accommodations.maxPrice)}
+                            </div>
+                            <div>
+                                <i className={'fa fa-cutlery ' + style.dinnerIcon} aria-hidden="true" /> Middagspriser:{' '}
+                                {formatMoneyNumber(destination.food.dinner.minPrice)} -{' '}
+                                {formatMoneyNumber(destination.food.dinner.maxPrice)}
+                            </div>
+                            <div>
+                                <i className={'fa fa-beer ' + style.beerIcon} aria-hidden="true" /> Øl:{' '}
+                                {formatMoneyNumber(destination.drinks.beer.minPrice)} -{' '}
+                                {formatMoneyNumber(destination.drinks.beer.maxPrice)}
+                            </div>
+                            <div>
+                                <i className={'fa fa-glass ' + style.glassIcon} aria-hidden="true" /> Chill flaske Cava:{' '}
+                                {formatMoneyNumber(destination.drinks.cava.minPrice)} -{' '}
+                                {formatMoneyNumber(destination.drinks.cava.maxPrice)}
+                            </div>
+                        </div>
+                    </section>
                     <h2 className={style.date}>{`${moment(startDate).format(
                         'dddd Do MMMM'
                     )} fra Oslo Gardermoen (OSL)`}</h2>
-                    {trips.map((x, index) => (
-                        <div key={index} className={style.flightTripItem}>
-                            <div>
-                                <span className={style.time}>
-                                    {moment(x.departrueTime).format('HH:mm')} - {moment(x.arrivalTime).format('HH:mm')}
-                                </span>
-                                {` (${Math.floor(x.duration / 60)} timer ${x.duration % 60} minutter)`}
-                            </div>
-                            <div>
-                                {x.airports[1].name} {x.airports[1].code}
-                            </div>
-                            <div>{formatNOK(x.price)}</div>
-                            <div className={style.carrier}>{x.carrier}</div>
-                        </div>
-                    ))}
                     <div className={style.infoContainer}>
                         <div>
                             <i className={'fa fa-bed ' + style.hotelIcon} aria-hidden="true" /> Hotellpriser:{' '}
@@ -127,6 +155,7 @@ export class Destination extends React.Component<WithRouterProps, IState> {
                         ))}
                     </div>
                 </div>
+                <Link to={to}>GI MÆ NO AINNA</Link>
             </div>
         );
     }
