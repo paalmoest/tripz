@@ -1,19 +1,23 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path');
 
 const config = {
     entry: {
         app: './app/index.tsx',
     },
+
     output: {
-        path: '/' + path.resolve(__dirname, 'dist'),
+        path: '/dist',
         filename: '[name].js',
     },
 
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                loader: 'source-map-loader',
+            },
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
@@ -22,15 +26,23 @@ const config = {
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'less-loader'],
-                }),
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                loader: ['style-loader', 'css-loader?modules&namedExport&camelCase'],
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            namedExport: true,
+                            camelCase: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                        },
+                    },
+                ],
             },
             {
                 test: /\.css$/,
@@ -53,10 +65,23 @@ const config = {
         new HtmlWebpackPlugin({
             template: 'index.template.ejs',
             inject: 'body',
-            favicon: 'favicon.ico',
         }),
-        new ExtractTextPlugin('[name].css'),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
     ],
+
+    devtool: 'source-map',
+    devServer: {
+        inline: true,
+        hot: true,
+        stats: 'errors-only',
+        port: 5000,
+        historyApiFallback: true,
+        proxy: {
+            '/config': 'http://localhost:3000',
+            '/data': 'http://localhost:3000',
+        },
+    },
 };
 
 module.exports = config;
